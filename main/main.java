@@ -64,6 +64,39 @@ public class Main{
   }
 
   public static String getPassword(String address, int key){
+    if(key > 26){
+      key = key % 26;
+  }
+  String cipherText = "";
+  int n = address.length();
 
+  for(int i = 0; i < n; i++){
+      char c = address.charAt(i);
+      if(Character.isLetter((c))){
+          if(Character.isLowerCase(c)){
+              char cha = (char)(c + key);
+              if(cha > 'z'){
+                  cipherText += (char)(c - (26 - key));
+              }
+              else {
+                  cipherText += cha;
+              }
+          }
+          else if(Character.isUpperCase(c)){
+              char cha = (char)(c + key);
+              if(cha > 'Z'){
+                  cipherText += (char)(c - (26 - key));
+              }
+              else {
+                  cipherText += cha;
+              }
+          }
+      }
+      else {
+          cipherText = cipherText + c;
+      }
+  }
+
+  return cipherText;
   }
 }
