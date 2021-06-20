@@ -47,7 +47,20 @@ public class Main{
   }
 
   public static int convertToDigit(String[] bin){
+    int sum = 0;
+        String  currentNum;
+        int newNum;
+        for (int i = 0; i < bin.length; i++) {
+            currentNum = bin[i];
+//            System.out.println(currentNum);
+            for(int j = 0; j < currentNum.length(); j++){
+                newNum = Integer.parseInt(String.valueOf(currentNum.charAt(j)));
+//                System.out.println("newNum" + newNum);
+                sum = sum + newNum;
+            }
+        }
 
+        return sum;
   }
 
   public static String getPassword(String address, int key){
